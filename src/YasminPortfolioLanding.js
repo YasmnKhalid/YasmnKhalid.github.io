@@ -121,7 +121,7 @@ export default function YasminPortfolioLanding() {
                     </div>
                     <div className="rounded-2xl border border-white/10 bg-slate-800/80 p-4">
                       <p className="text-sm text-slate-400">Open to</p>
-                      <p className="mt-1 font-medium text-white">Junior to mid-level roles, freelance builds, long-term collaborations</p>
+                      <p className="mt-1 font-medium text-white">mid-level roles, freelance builds, long-term collaborations</p>
                     </div>
                   </div>
                 </div>
