@@ -105,7 +105,7 @@ export default function YasminPortfolioLanding() {
                       YK
                     </div>
                     <div>
-                      <h2 className="text-xl font-semibold">Yasmin Khalid</h2>
+                      <h2 className="text-xl font-semibold">Yasmin Khalid  REVOKEEEEEE</h2>
                       <p className="text-sm text-slate-400">Angular & ASP.NET Developer</p>
                     </div>
                   </div>
