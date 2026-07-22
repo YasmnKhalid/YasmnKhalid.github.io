@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import Navbar from '../components/Navbar';
 
 export const metadata = {
   title: 'Yasmin Portfolio',
@@ -12,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="min-h-screen bg-slate-950 text-white">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
