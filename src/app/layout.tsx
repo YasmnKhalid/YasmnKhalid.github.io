@@ -4,6 +4,9 @@ import Navbar from '../components/Navbar';
 export const metadata = {
   title: 'Yasmin Portfolio',
   description: 'Portfolio of Yasmin Khalid',
+  icons: {
+    icon: '/icons/yasmin-pixel.png',
+  },
 };
 
 export default function RootLayout({
