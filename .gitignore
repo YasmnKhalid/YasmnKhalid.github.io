@@ -1,7 +1,9 @@
 # Node & Build Stuff
 node_modules
 .next
+out
 dist
+
 
 # Environment files
 .env
