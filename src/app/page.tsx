@@ -1,5 +1,7 @@
 import ScrollSideNav from '../components/ScrollSideNav';
 import Link from 'next/link';
+import { Suspense } from 'react';
+import { HeroAvailabilityBadge, HeroHireButton, HeroOpenTo } from '../components/HeroFreelanceElements';
 
 export default function Home() {
   const skills = [
@@ -47,9 +49,9 @@ export default function Home() {
           
           <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <div className="mb-6 inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm text-emerald-200 backdrop-blur">
-                Available for full-time roles and freelance projects
-              </div>
+              <Suspense fallback={null}>
+                <HeroAvailabilityBadge />
+              </Suspense>
               <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">
                 I build modern web applications that are clean, scalable, and ready for real business needs.
               </h1>
@@ -65,12 +67,9 @@ export default function Home() {
                 >
                   View Projects
                 </a>
-                <a
-                  href="/freelance/book-a-call"
-                  className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
-                >
-                  Hire Me
-                </a>
+                <Suspense fallback={null}>
+                  <HeroHireButton />
+                </Suspense>
               </div>
 
               <div className="mt-10 flex flex-wrap gap-3">
@@ -114,7 +113,9 @@ export default function Home() {
                     </div>
                     <div className="rounded-2xl border border-white/10 bg-slate-800/80 p-4">
                       <p className="text-sm text-slate-400">Open to</p>
-                      <p className="mt-1 font-medium text-white">mid-level roles, freelance builds, long-term collaborations</p>
+                      <Suspense fallback={null}>
+                        <HeroOpenTo />
+                      </Suspense>
                     </div>
                   </div>
                 </div>

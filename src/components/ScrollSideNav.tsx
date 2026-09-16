@@ -1,12 +1,22 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function ScrollSideNav() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
+      setIsScrolling(true);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 1200);
+
       const sections = ['home', 'projects', 'about'];
       const scrollPosition = window.scrollY + window.innerHeight / 3;
 
@@ -23,9 +33,14 @@ export default function ScrollSideNav() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Check once on mount
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
   }, []);
 
   const items = [
@@ -59,10 +74,14 @@ export default function ScrollSideNav() {
                 }`}
               />
               
-              {/* Label that shows on hover or is highlighted when active */}
+              {/* Label that pops out while scrolling when active, and shows on hover */}
               <span
-                className={`absolute left-7 px-2.5 py-1 rounded bg-slate-900/90 border border-white/10 text-[10px] uppercase tracking-widest text-slate-300 font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:left-9 transition-all duration-300 shadow-lg ${
-                  isActive ? 'text-emerald-300 border-emerald-500/20' : ''
+                className={`absolute left-7 px-2.5 py-1 rounded bg-slate-900/90 border text-[10px] uppercase tracking-widest font-semibold whitespace-nowrap pointer-events-none transition-all duration-300 shadow-lg ${
+                  isActive
+                    ? isScrolling
+                      ? 'opacity-100 left-9 text-emerald-300 border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.3)] scale-100'
+                      : 'opacity-0 text-emerald-300 border-emerald-500/20 group-hover:opacity-100 group-hover:left-9'
+                    : 'opacity-0 text-slate-300 border-white/10 group-hover:opacity-100 group-hover:left-9'
                 }`}
               >
                 {item.label}
@@ -77,3 +96,4 @@ export default function ScrollSideNav() {
     </div>
   );
 }
+
