@@ -155,7 +155,7 @@ export default function ScrollbarIndicator() {
   return (
     <aside
       aria-label="Current section indicator"
-      className="fixed right-3 md:right-4 z-50 pointer-events-none select-none transition-all duration-300 ease-out"
+      className="fixed right-3 md:hidden z-50 pointer-events-none select-none transition-all duration-300 ease-out"
       style={{
         top: `${badgeTop}px`,
         transform: `translateY(-50%) ${
