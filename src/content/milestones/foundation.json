@@ -1,0 +1,21 @@
+{
+  "role": "Diploma in Computer Science",
+  "company": "MARA Professional College",
+  "organization": "Kolej Profesional MARA",
+  "location": "Malaysia",
+  "year": "2020 — 2022",
+  "timelineLabel": "The Foundation",
+  "verticalLabel": "Diploma in CS",
+  "type": "Academic Milestone",
+  "badge": "Core Computing",
+  "summary": "Built a rigorous foundation in algorithms, relational database architecture, object-oriented programming, and computer systems.",
+  "highlights": [
+    "Developed strong fundamentals in Java, C++, data structures, and database design principles.",
+    "Gained early hands-on experience building structured software applications and modular algorithms.",
+    "Graduated with distinction, paving the way for advanced software engineering specialization."
+  ],
+  "skills": ["Java", "C++", "SQL", "Data Structures", "OOP", "Software Fundamentals"],
+  "metricLabel": "Graduation Merit",
+  "metricValue": "First Class",
+  "order": 1
+}

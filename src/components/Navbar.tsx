@@ -36,7 +36,8 @@ export default function Navbar() {
           {/* Enterprise Experience Dropdown */}
           <div className="relative group py-2">
             <button
-              className="transition hover:text-white flex items-center gap-1"
+              type="button"
+              className="transition hover:text-white flex items-center gap-1 outline-none focus:outline-none focus:ring-0 select-none"
             >
               Enterprise Experience
               <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>

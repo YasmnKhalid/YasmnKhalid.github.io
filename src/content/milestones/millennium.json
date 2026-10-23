@@ -1,0 +1,22 @@
+{
+  "role": "Mobile Developer Intern",
+  "company": "Millennium Radius Sdn Bhd",
+  "organization": "Client: Johor Palm Plantation",
+  "location": "Kuala Lumpur, Malaysia",
+  "year": "Mar 2025 — Jul 2025",
+  "timelineLabel": "2025 Intern",
+  "verticalLabel": "Mobile & BI",
+  "type": "Corporate Internship",
+  "badge": "Executive BI Platform",
+  "summary": "Engineered a high-performance Business Intelligence tablet dashboard for board-level executives, incorporating live analytics and automated ETL pipelines.",
+  "highlights": [
+    "Built responsive, high-performance UI components using React Native, Expo, and D3.js for interactive analytics.",
+    "Collaborated with data engineers on ETL pipelines (AWS Glue, Python) for automated data ingestion and quality validation.",
+    "Performed anomaly detection and data profiling using Pandas, NumPy, and machine learning (Isolation Forest).",
+    "Automated data quality reporting via SMTP, saving ~6 hours weekly and streamlining executive access."
+  ],
+  "skills": ["React Native", "Expo", "D3.js", "Python", "AWS Glue", "Pandas", "NumPy", "REST APIs"],
+  "metricLabel": "Time Saved",
+  "metricValue": "~6 hrs/week",
+  "order": 3
+}

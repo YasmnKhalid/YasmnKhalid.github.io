@@ -1,0 +1,23 @@
+{
+  "role": "Full Stack Engineer",
+  "company": "Inscale Asia Sdn Bhd / SEB ADC",
+  "organization": "Scandinavian Banking Client (SEB)",
+  "location": "Kuala Lumpur & Stockholm, Sweden",
+  "year": "Sep 2025 — Apr 2026",
+  "timelineLabel": "2025–2026 Enterprise",
+  "verticalLabel": "SEB / Banking",
+  "type": "Full-Time Enterprise",
+  "badge": "Pension & Insurance Systems",
+  "summary": "Spearheaded enterprise banking solutions for Scandinavian customers, specializing in microfrontend architectures, resilient distributed systems, and GitOps deployments.",
+  "highlights": [
+    "Architected a reusable analytics solution for a microfrontend platform across 5+ apps, reducing integration effort by ~40% with Dead Letter Queue-based processing.",
+    "Developed a custom Redis NuGet package with resilience and circuit breaker patterns to eliminate redundant Splunk logging and optimize infrastructure costs.",
+    "Assisted in integrating a modern insurance administration engine with digital customer portals to visualize pensions for Swedish consumers.",
+    "Engineered GitOps CI/CD pipelines with GitHub Actions, Kubernetes, and Kustomize via ArgoCD.",
+    "Drove >80% automated test coverage utilizing xUnit for .NET services and Playwright for E2E workflows."
+  ],
+  "skills": ["C#", "ASP.NET Core", "Angular", "Microfrontends", "Redis", "Kubernetes", "Docker", "GitHub Actions", "ArgoCD", "xUnit"],
+  "metricLabel": "Integration Effort",
+  "metricValue": "-40% Saved",
+  "order": 4
+}

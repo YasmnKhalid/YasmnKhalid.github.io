@@ -1,5 +1,6 @@
 import CareerTimeline from '../../../components/CareerTimeline';
 import Link from 'next/link';
+import { getMilestones, getResumeSettings } from '@/lib/content';
 
 export const metadata = {
   title: 'Full-Time Experience & Career Timeline | Yasmin Khalid',
@@ -7,6 +8,9 @@ export const metadata = {
 };
 
 export default function FullTimeWorkPage() {
+  const milestones = getMilestones();
+  const resume = getResumeSettings();
+
   return (
     <main className="min-h-screen relative overflow-hidden pb-24">
       {/* Background radial gradients consistent with theme */}
@@ -25,7 +29,7 @@ export default function FullTimeWorkPage() {
         </div>
 
         {/* Timeline Component */}
-        <CareerTimeline />
+        <CareerTimeline milestones={milestones} resumeUrl={resume.resumeFile} />
 
         {/* Highlights & Enterprise Competencies Grid below timeline */}
         <div className="mt-16 grid gap-6 md:grid-cols-3">
@@ -82,7 +86,7 @@ export default function FullTimeWorkPage() {
               Get in Touch
             </a>
             <a
-              href="/Yasmin Khalid.pdf"
+              href={resume.resumeFile}
               download="Yasmin_Khalid_Resume.pdf"
               className="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition text-sm"
             >

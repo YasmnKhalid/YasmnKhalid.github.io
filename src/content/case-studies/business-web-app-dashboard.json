@@ -1,0 +1,18 @@
+{
+  "title": "Business Web App Dashboard",
+  "description": "A responsive dashboard for business operations, reporting, and workflow management designed for clarity and speed.",
+  "image": "/ComingSoon.png",
+  "stack": ["Angular", "ASP.NET", "SQL Server"],
+  "role": "Full Stack Engineer",
+  "timeline": "4 Months (Q4 2025)",
+  "featured": true,
+  "order": 2,
+  "challenge": "The operations team used three separate legacy systems to track tickets, customer communications, and supply chains. The separation caused data inconsistencies, delays, and performance bottlenecks, with analytical reports taking up to 10 seconds to load.",
+  "solution": "Created a unified single-page application dashboard in Angular, backed by a high-throughput ASP.NET Core Web API. Unified legacy databases into SQL Server with optimal indexing and partitioned tables. Integrated RxJS streams to feed real-time notifications to coordinators.",
+  "achievements": [
+    "Reduced average dashboard report loading time from 10 seconds to 800 milliseconds.",
+    "Centralized work ticket workflows, saving operational staff roughly 12 hours of manual tracking per week.",
+    "Achieved a 95% user satisfaction rate on the intuitive drag-and-drop workflow kanban boards."
+  ],
+  "codeSnippet": "// ASP.NET Core optimized query retrieving aggregated operational metrics\n[HttpGet(\"metrics/summary\")]\npublic async Task<IActionResult> GetMetricsSummary([FromQuery] DateTime startDate)\n{\n    // Retrieve aggregated numbers using optimized CTEs and query indices\n    var summary = await _dbContext.Tickets\n        .Where(t => t.CreatedAt >= startDate)\n        .GroupBy(t => t.Status)\n        .Select(g => new StatusMetricDto \n        {\n            Status = g.Key.ToString(),\n            Count = g.Count(),\n            AverageResolutionTimeMinutes = g.Average(t => t.ResolutionTimeMinutes ?? 0)\n        })\n        .ToListAsync();\n\n    return Ok(summary);\n}"
+}

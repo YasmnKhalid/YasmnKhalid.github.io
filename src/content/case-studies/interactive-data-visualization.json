@@ -1,0 +1,18 @@
+{
+  "title": "Interactive Data Visualization",
+  "description": "A modern charting experience with dynamic filtering, tooltip interactions, and smooth UI behavior across devices.",
+  "image": "/ComingSoon.png",
+  "stack": ["React Native", "Skia", "SVG"],
+  "role": "Mobile & UI Developer",
+  "timeline": "2 Months (Q1 2026)",
+  "featured": true,
+  "order": 3,
+  "challenge": "Rendering large time-series financial datasets (10,000+ data points) on native mobile screens caused severe UI frame drops (under 20 FPS). Standard charting libraries caused lag when panning, zooming, or triggering tooltips.",
+  "solution": "Implemented hardware-accelerated rendering using Shopify Skia for React Native. Rendered complex line charts, areas, and gridlines on the GPU. Built custom SVG interaction layers using React Native Gesture Handler and Reanimated to track finger movements without locking the main thread.",
+  "achievements": [
+    "Maintained a smooth 60 FPS rendering rate on budget Android and iOS devices during rapid panning/zooming.",
+    "Reduced initial memory footprints for rendering time-series grids by 70%.",
+    "Created custom responsive tooltips that trace coordinates smoothly on touch."
+  ],
+  "codeSnippet": "// Panning gesture handler using React Native Reanimated for chart tracking\nconst panGesture = Gesture.Pan()\n  .onStart((event) => {\n    touchX.value = event.x;\n    active.value = true;\n  })\n  .onChange((event) => {\n    // Keep interactive tooltip position updated synchronously on the UI thread\n    touchX.value = Math.max(0, Math.min(event.x, chartWidth));\n  })\n  .onEnd(() => {\n    active.value = false;\n  });"
+}

@@ -1,0 +1,21 @@
+{
+  "role": "Full Stack Engineer & Consultant",
+  "company": "Open to Opportunities",
+  "organization": "Global & Enterprise Projects",
+  "location": "Open to Remote / Hybrid",
+  "year": "Present & Beyond",
+  "timelineLabel": "Today & Beyond",
+  "verticalLabel": "Continuous Growth",
+  "type": "Current Focus",
+  "badge": "Ready for Impact",
+  "summary": "Combining enterprise-grade backend rigor in .NET with modern frontend mastery in Angular & React to build reliable, high-value digital products.",
+  "highlights": [
+    "Actively exploring senior and impactful software engineering opportunities.",
+    "Deep focus on cloud-native architectures, performance optimization, and scalable web platforms.",
+    "Continuous contributor to modern developer tools, open-source utilities, and freelance client success."
+  ],
+  "skills": ["System Design", "Enterprise Architecture", "Cloud Native", "API Security", "Clean Code"],
+  "metricLabel": "Availability",
+  "metricValue": "Immediate",
+  "order": 5
+}

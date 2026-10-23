@@ -1,0 +1,18 @@
+{
+  "title": "Voucher Redemption System",
+  "description": "A full-stack platform for managing voucher campaigns, redemption flows, and user tracking with a clean admin experience.",
+  "image": "/Vaucher.png",
+  "stack": ["MongoDB", "Express", "React", "Node.js"],
+  "role": "Lead Full Stack Developer",
+  "timeline": "3 Months (Q2 2025)",
+  "featured": true,
+  "order": 1,
+  "challenge": "Voucher campaigns often suffer from duplication fraud (double-redemption) and server latency when thousands of concurrent users attempt redemptions at campaign launch. The client needed a secure, low-latency validation system that guarantees single-redemption rules.",
+  "solution": "Designed and built a distributed redemption engine. Used MongoDB transactions to guarantee atomicity and avoid double-claims. Implemented an in-memory caching layer with automatic expiration to validate voucher eligibility under 15ms. Designed a React dashboard for real-time validation logging and campaign metrics.",
+  "achievements": [
+    "Eliminated voucher duplication fraud completely (0 duplicate redemptions in production).",
+    "Improved average API response time for validation requests from 120ms to 12ms.",
+    "Successfully handled peaks of 850 concurrent requests/second during flash promotions."
+  ],
+  "codeSnippet": "// Atomically claim a voucher to prevent race conditions / double redemptions\nasync function redeemVoucher(db, voucherCode, userId) {\n  const session = db.startSession();\n  try {\n    session.startTransaction();\n    \n    // Find voucher with status \"Available\"\n    const voucher = await db.collection('vouchers').findOne(\n      { code: voucherCode, status: 'Available' },\n      { session }\n    );\n    \n    if (!voucher) {\n      throw new Error('Voucher is invalid or already redeemed');\n    }\n    \n    // Atomically update status and attach redemption info\n    await db.collection('vouchers').updateOne(\n      { _id: voucher._id },\n      { $set: { status: 'Redeemed', redeemedBy: userId, redeemedAt: new Date() } },\n      { session }\n    );\n    \n    await session.commitTransaction();\n    return { success: true, message: 'Voucher redeemed successfully!' };\n  } catch (error) { \n    await session.abortTransaction();\n    throw error;\n  } finally {\n    session.endSession();\n  }\n}"
+}

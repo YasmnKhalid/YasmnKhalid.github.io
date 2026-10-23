@@ -2,23 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-
-interface Milestone {
-  id: string;
-  year: string;
-  timelineLabel: string;
-  verticalLabel: string;
-  role: string;
-  company: string;
-  organization: string;
-  location: string;
-  type: string;
-  badge: string;
-  summary: string;
-  highlights: string[];
-  skills: string[];
-  metrics?: { label: string; value: string };
-}
+import { Milestone } from '@/lib/content';
 
 const milestones: Milestone[] = [
   {
@@ -131,10 +115,18 @@ const milestones: Milestone[] = [
   },
 ];
 
-export default function CareerTimeline() {
-  const [activeIndex, setActiveIndex] = useState(3); // Default to latest full-time role (Inscale/SEB)
+export default function CareerTimeline({
+  milestones: passedMilestones,
+  resumeUrl = '/Yasmin Khalid.pdf',
+}: {
+  milestones?: Milestone[];
+  resumeUrl?: string;
+} = {}) {
+  const currentMilestones = passedMilestones && passedMilestones.length > 0 ? passedMilestones : milestones;
+  const defaultIndex = Math.min(Math.max(0, currentMilestones.length - 2), currentMilestones.length - 1);
+  const [activeIndex, setActiveIndex] = useState(defaultIndex);
 
-  const activeMilestone = milestones[activeIndex];
+  const activeMilestone = currentMilestones[activeIndex] || currentMilestones[0];
 
   return (
     <div className="w-full">
@@ -169,13 +161,13 @@ export default function CareerTimeline() {
                 Milestones & Timeline
               </p>
               <nav className="flex flex-col gap-5">
-                {milestones.map((item, idx) => {
+                {currentMilestones.map((item, idx) => {
                   const isActive = activeIndex === idx;
                   return (
                     <button
                       key={item.id}
                       onClick={() => setActiveIndex(idx)}
-                      className={`group flex items-center justify-between w-full text-left transition-all duration-300 py-1.5 px-3 rounded-xl ${
+                      className={`group flex items-center justify-between w-full text-left transition-all duration-300 py-1.5 px-3 rounded-xl outline-none focus:outline-none focus:ring-0 select-none ${
                         isActive
                           ? 'bg-emerald-500/10 text-emerald-300 font-semibold'
                           : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
@@ -208,7 +200,7 @@ export default function CareerTimeline() {
             {/* Resume Quick Link */}
             <div className="pt-6 border-t border-white/10 mt-6">
               <a
-                href="/Yasmin Khalid.pdf"
+                href={resumeUrl}
                 download="Yasmin_Khalid_Resume.pdf"
                 className="inline-flex items-center gap-2 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
               >
@@ -345,16 +337,16 @@ export default function CareerTimeline() {
                 <button
                   onClick={() => setActiveIndex((prev) => Math.max(0, prev - 1))}
                   disabled={activeIndex === 0}
-                  className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-slate-300 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none transition"
+                  className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-slate-300 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none transition outline-none focus:outline-none"
                 >
                   &larr; Previous Stage
                 </button>
                 <div className="flex items-center gap-1.5">
-                  {milestones.map((_, i) => (
+                  {currentMilestones.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setActiveIndex(i)}
-                      className={`h-2 rounded-full transition-all ${
+                      className={`h-2 rounded-full transition-all outline-none focus:outline-none ${
                         i === activeIndex ? 'w-6 bg-emerald-400' : 'w-2 bg-slate-700 hover:bg-slate-500'
                       }`}
                       aria-label={`Jump to stage ${i + 1}`}
@@ -362,9 +354,9 @@ export default function CareerTimeline() {
                   ))}
                 </div>
                 <button
-                  onClick={() => setActiveIndex((prev) => Math.min(milestones.length - 1, prev + 1))}
-                  disabled={activeIndex === milestones.length - 1}
-                  className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-slate-300 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none transition"
+                  onClick={() => setActiveIndex((prev) => Math.min(currentMilestones.length - 1, prev + 1))}
+                  disabled={activeIndex === currentMilestones.length - 1}
+                  className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-slate-300 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none transition outline-none focus:outline-none"
                 >
                   Next Stage &rarr;
                 </button>
@@ -378,13 +370,13 @@ export default function CareerTimeline() {
         <div className="lg:hidden flex flex-col space-y-6">
           {/* Horizontal scrollable tabs */}
           <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
-            {milestones.map((item, idx) => {
+            {currentMilestones.map((item, idx) => {
               const isActive = activeIndex === idx;
               return (
                 <button
                   key={item.id}
                   onClick={() => setActiveIndex(idx)}
-                  className={`flex-shrink-0 px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition ${
+                  className={`flex-shrink-0 px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition outline-none focus:outline-none ${
                     isActive
                       ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
                       : 'bg-white/5 text-slate-300 hover:bg-white/10 border border-white/5'

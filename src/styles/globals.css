@@ -8,6 +8,15 @@ html {
   scroll-padding-top: 5rem;
 }
 
+/* Remove default browser white outline border on interactive buttons */
+button:focus,
+button:focus-visible,
+a:focus,
+a:focus-visible {
+  outline: none !important;
+  box-shadow: none;
+}
+
 /* Custom Modern Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -33,4 +42,4 @@ html {
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(71, 85, 105, 0.6) rgba(2, 6, 23, 0.8);
-}
+}

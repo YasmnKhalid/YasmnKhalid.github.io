@@ -1,32 +1,8 @@
 import Link from 'next/link';
+import { getCaseStudies } from '@/lib/content';
 
 export default function Portfolio() {
-  const projects = [
-    {
-      title: 'Voucher Redemption System',
-      slug: 'voucher-redemption-system',
-      description:
-        'A full-stack platform for managing voucher campaigns, redemption flows, and user tracking with a clean admin experience.',
-      stack: ['MongoDB', 'Express', 'React', 'Node.js'],
-      image: '/Vaucher.png',
-    },
-    {
-      title: 'Business Web App Dashboard',
-      slug: 'business-web-app-dashboard',
-      description:
-        'A responsive dashboard for business operations, reporting, and workflow management designed for clarity and speed.',
-      stack: ['Angular', 'ASP.NET', 'SQL'],
-      image: '/ComingSoon.png',
-    },
-    {
-      title: 'Interactive Data Visualization',
-      slug: 'interactive-data-visualization',
-      description:
-        'A modern charting experience with dynamic filtering, tooltip interactions, and smooth UI behavior across devices.',
-      stack: ['React Native', 'Skia', 'SVG'],
-      image: '/ComingSoon.png',
-    },
-  ];
+  const projects = getCaseStudies();
 
   return (
     <main>

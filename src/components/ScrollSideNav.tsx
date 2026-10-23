@@ -53,7 +53,7 @@ export default function ScrollSideNav() {
     <div className="fixed left-4 lg:left-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-6 select-none">
       {/* Top vertical line */}
       <div className="w-px h-16 bg-gradient-to-b from-transparent to-slate-700" />
-      
+
       {/* Navigation dots & labels */}
       <div className="flex flex-col gap-6 items-center">
         {items.map((item) => {
@@ -67,22 +67,20 @@ export default function ScrollSideNav() {
             >
               {/* Dot */}
               <div
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  isActive
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${isActive
                     ? 'bg-emerald-400 scale-125 shadow-[0_0_10px_rgba(52,211,153,0.8)]'
                     : 'bg-slate-600 hover:bg-slate-400 group-hover:scale-110'
-                }`}
+                  }`}
               />
-              
+
               {/* Label that pops out while scrolling when active, and shows on hover */}
               <span
-                className={`absolute left-7 px-2.5 py-1 rounded bg-slate-900/90 border text-[10px] uppercase tracking-widest font-semibold whitespace-nowrap pointer-events-none transition-all duration-300 shadow-lg ${
-                  isActive
+                className={`absolute left-7 px-2.5 py-1 rounded bg-slate-900/90 border text-[10px] uppercase tracking-widest font-semibold whitespace-nowrap pointer-events-none transition-all duration-300 shadow-lg ${isActive
                     ? isScrolling
                       ? 'opacity-100 left-9 text-emerald-300 border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.3)] scale-100'
                       : 'opacity-0 text-emerald-300 border-emerald-500/20 group-hover:opacity-100 group-hover:left-9'
                     : 'opacity-0 text-slate-300 border-white/10 group-hover:opacity-100 group-hover:left-9'
-                }`}
+                  }`}
               >
                 {item.label}
               </span>

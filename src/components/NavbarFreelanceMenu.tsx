@@ -13,7 +13,8 @@ export default function NavbarFreelanceMenu() {
   return (
     <div className="relative group py-2">
       <button
-        className="transition hover:text-white flex items-center gap-1"
+        type="button"
+        className="transition hover:text-white flex items-center gap-1 outline-none focus:outline-none focus:ring-0 select-none"
       >
         Freelance
         <svg

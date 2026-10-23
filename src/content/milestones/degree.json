@@ -1,0 +1,21 @@
+{
+  "role": "Bachelor of IT (Hons.) in Software Engineering",
+  "company": "Universiti Kuala Lumpur",
+  "organization": "UniKL MIIT",
+  "location": "Kuala Lumpur, Malaysia",
+  "year": "2022 — 2025",
+  "timelineLabel": "Software Eng",
+  "verticalLabel": "B.IT (Hons.)",
+  "type": "Higher Education",
+  "badge": "Software Engineering",
+  "summary": "Specialized in enterprise software architecture, full-stack application development, modern API design, and agile methodologies.",
+  "highlights": [
+    "Engineered full-stack applications leveraging Angular on the frontend and ASP.NET Core on the backend.",
+    "Mastered software testing frameworks, version control workflows (Git/GitLab), and clean code paradigms.",
+    "Led university software teams, sharpening technical leadership and collaborative problem-solving."
+  ],
+  "skills": ["Angular", "TypeScript", "C#", ".NET Core", "SQL Server", "REST APIs", "Git"],
+  "metricLabel": "Degree Honor",
+  "metricValue": "First Class",
+  "order": 2
+}
