@@ -37,6 +37,7 @@ export interface Milestone {
 
 const CASE_STUDIES_DIR = path.join(process.cwd(), 'src', 'content', 'case-studies');
 const MILESTONES_DIR = path.join(process.cwd(), 'src', 'content', 'milestones');
+const EDUCATION_DIR = path.join(process.cwd(), 'src', 'content', 'education');
 
 export function getCaseStudies(): CaseStudy[] {
   if (!fs.existsSync(CASE_STUDIES_DIR)) {
@@ -114,7 +115,46 @@ export function getMilestones(): Milestone[] {
     };
   });
 
-  return milestones.sort((a, b) => a.order - b.order);
+  return milestones.sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+}
+
+export function getEducation(): Milestone[] {
+  if (!fs.existsSync(EDUCATION_DIR)) {
+    return [];
+  }
+
+  const files = fs.readdirSync(EDUCATION_DIR).filter((file) => file.endsWith('.json'));
+
+  const education: Milestone[] = files.map((file) => {
+    const id = file.replace(/\.json$/, '');
+    const filePath = path.join(EDUCATION_DIR, file);
+    const raw = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+
+    const metrics =
+      raw.metricLabel && raw.metricValue
+        ? { label: raw.metricLabel, value: raw.metricValue }
+        : undefined;
+
+    return {
+      id,
+      role: raw.role || id,
+      company: raw.company || '',
+      organization: raw.organization || '',
+      location: raw.location || '',
+      year: raw.year || '',
+      timelineLabel: raw.timelineLabel || raw.year || '',
+      verticalLabel: raw.verticalLabel || '',
+      type: raw.type || 'Education',
+      badge: raw.badge || '',
+      summary: raw.summary || '',
+      highlights: Array.isArray(raw.highlights) ? raw.highlights : [],
+      skills: Array.isArray(raw.skills) ? raw.skills : [],
+      metrics,
+      order: raw.order ?? 99,
+    };
+  });
+
+  return education.sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 }
 
 export interface ResumeSettings {

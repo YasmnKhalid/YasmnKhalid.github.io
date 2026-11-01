@@ -19,5 +19,5 @@
   "skills": ["C#", "ASP.NET Core", "Angular", "Microfrontends", "Redis", "Kubernetes", "Docker", "GitHub Actions", "ArgoCD", "xUnit"],
   "metricLabel": "Integration Effort",
   "metricValue": "-40% Saved",
-  "order": 4
+  "order": 2
 }

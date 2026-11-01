@@ -17,5 +17,5 @@
   "skills": ["System Design", "Enterprise Architecture", "Cloud Native", "API Security", "Clean Code"],
   "metricLabel": "Availability",
   "metricValue": "Immediate",
-  "order": 5
+  "order": 3
 }

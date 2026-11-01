@@ -6,48 +6,6 @@ import { Milestone } from '@/lib/content';
 
 const milestones: Milestone[] = [
   {
-    id: 'foundation',
-    year: '2020 — 2022',
-    timelineLabel: 'The Foundation',
-    verticalLabel: 'Diploma in CS',
-    role: 'Diploma in Computer Science',
-    company: 'MARA Professional College',
-    organization: 'Kolej Profesional MARA',
-    location: 'Malaysia',
-    type: 'Academic Milestone',
-    badge: 'Core Computing',
-    summary:
-      'Built a rigorous foundation in algorithms, relational database architecture, object-oriented programming, and computer systems.',
-    highlights: [
-      'Developed strong fundamentals in Java, C++, data structures, and database design principles.',
-      'Gained early hands-on experience building structured software applications and modular algorithms.',
-      'Graduated with distinction, paving the way for advanced software engineering specialization.',
-    ],
-    skills: ['Java', 'C++', 'SQL', 'Data Structures', 'OOP', 'Software Fundamentals'],
-    metrics: { label: 'Graduation Merit', value: 'First Class' },
-  },
-  {
-    id: 'degree',
-    year: '2022 — 2025',
-    timelineLabel: 'Software Eng',
-    verticalLabel: 'B.IT (Hons.)',
-    role: 'Bachelor of IT (Hons.) in Software Engineering',
-    company: 'Universiti Kuala Lumpur',
-    organization: 'UniKL MIIT',
-    location: 'Kuala Lumpur, Malaysia',
-    type: 'Higher Education',
-    badge: 'Software Engineering',
-    summary:
-      'Specialized in enterprise software architecture, full-stack application development, modern API design, and agile methodologies.',
-    highlights: [
-      'Engineered full-stack applications leveraging Angular on the frontend and ASP.NET Core on the backend.',
-      'Mastered software testing frameworks, version control workflows (Git/GitLab), and clean code paradigms.',
-      'Led university software teams, sharpening technical leadership and collaborative problem-solving.',
-    ],
-    skills: ['Angular', 'TypeScript', 'C#', '.NET Core', 'SQL Server', 'REST APIs', 'Git'],
-    metrics: { label: 'Degree Honor', value: 'First Class' },
-  },
-  {
     id: 'millennium',
     year: 'Mar 2025 — Jul 2025',
     timelineLabel: '2025 Intern',
@@ -140,8 +98,8 @@ export default function CareerTimeline({
           Our Journey
         </h1>
         <p className="mt-4 text-base md:text-lg text-slate-400 leading-relaxed">
-          From academic foundations to developing mission-critical systems for Scandinavian banking
-          institutions and enterprise analytics.
+          Delivering high-reliability enterprise systems, executive analytics platforms, and mission-critical
+          solutions for Scandinavian banking institutions.
         </p>
       </div>
 
@@ -215,8 +173,11 @@ export default function CareerTimeline({
           {/* Right Main Canvas: Column dividers with vertical labels & Active Overlay Card */}
           <div className="col-span-9 relative flex items-stretch">
             {/* The Vertical Grid Columns with Rotated Labels */}
-            <div className="absolute inset-0 grid grid-cols-5 pointer-events-none">
-              {milestones.map((item, idx) => {
+            <div
+              className="absolute inset-0 grid pointer-events-none"
+              style={{ gridTemplateColumns: `repeat(${currentMilestones.length}, minmax(0, 1fr))` }}
+            >
+              {currentMilestones.map((item, idx) => {
                 const isActive = activeIndex === idx;
                 return (
                   <div

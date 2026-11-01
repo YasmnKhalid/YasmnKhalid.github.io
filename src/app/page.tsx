@@ -2,7 +2,7 @@ import ScrollSideNav from '../components/ScrollSideNav';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { HeroAvailabilityBadge, HeroHireButton, HeroOpenTo } from '../components/HeroFreelanceElements';
-import { getFeaturedCaseStudies, getResumeSettings } from '@/lib/content';
+import { getEducation, getFeaturedCaseStudies, getResumeSettings } from '@/lib/content';
 
 export default function Home() {
   const skills = [
@@ -15,6 +15,7 @@ export default function Home() {
   ];
 
   const projects = getFeaturedCaseStudies();
+  const educationList = getEducation();
   const resume = getResumeSettings();
 
   return (
@@ -144,6 +145,100 @@ export default function Home() {
                 >
                   Read Case Study &rarr;
                 </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="education" className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+        <div className="mb-10 max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">Academic Background</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl text-white">
+            Education & Foundations
+          </h2>
+          <p className="mt-4 text-slate-400 leading-relaxed">
+            A strong academic grounding in software engineering, algorithms, and full-stack system design.
+          </p>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-2">
+          {educationList.map((edu) => (
+            <div
+              key={edu.id}
+              className="group relative flex flex-col justify-between rounded-[28px] border border-white/10 bg-white/5 p-7 md:p-8 transition hover:-translate-y-1 hover:border-emerald-300/30 hover:bg-white/[0.07]"
+            >
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+                      {edu.badge}
+                    </span>
+                    <span className="px-2.5 py-1 rounded-md bg-white/5 text-slate-400 text-xs font-medium">
+                      {edu.type}
+                    </span>
+                  </div>
+                  <span className="text-xs font-mono font-medium text-emerald-400 bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-800/40">
+                    {edu.year}
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-bold text-white tracking-tight">
+                  {edu.role}
+                </h3>
+                <div className="flex flex-wrap items-center gap-2 text-sm text-slate-300 mt-1.5 mb-4 font-medium">
+                  <span className="text-white font-semibold">{edu.company}</span>
+                  {edu.organization && edu.organization !== edu.company && (
+                    <>
+                      <span className="text-slate-600">&bull;</span>
+                      <span className="text-slate-400">{edu.organization}</span>
+                    </>
+                  )}
+                  <span className="text-slate-600">&bull;</span>
+                  <span className="text-slate-400">{edu.location}</span>
+                </div>
+
+                <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                  {edu.summary}
+                </p>
+
+                {edu.highlights.length > 0 && (
+                  <div className="space-y-2.5 mb-6">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      Key Highlights
+                    </p>
+                    {edu.highlights.map((point, i) => (
+                      <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300 leading-normal">
+                        <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
+                        <span>{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                <div className="flex flex-wrap gap-1.5">
+                  {edu.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-full bg-slate-800 px-3 py-1 text-xs text-slate-300"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+
+                {edu.metrics && (
+                  <div className="text-right shrink-0 ml-auto">
+                    <div className="text-[10px] uppercase tracking-wider text-slate-400">
+                      {edu.metrics.label}
+                    </div>
+                    <div className="text-sm font-bold text-emerald-400">
+                      {edu.metrics.value}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}

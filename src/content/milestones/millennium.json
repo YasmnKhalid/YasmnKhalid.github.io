@@ -18,5 +18,5 @@
   "skills": ["React Native", "Expo", "D3.js", "Python", "AWS Glue", "Pandas", "NumPy", "REST APIs"],
   "metricLabel": "Time Saved",
   "metricValue": "~6 hrs/week",
-  "order": 3
+  "order": 1
 }

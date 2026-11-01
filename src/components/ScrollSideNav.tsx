@@ -17,7 +17,7 @@ export default function ScrollSideNav() {
         setIsScrolling(false);
       }, 1200);
 
-      const sections = ['home', 'projects', 'about'];
+      const sections = ['home', 'projects', 'education', 'about'];
       const scrollPosition = window.scrollY + window.innerHeight / 3;
 
       for (const section of sections) {
@@ -46,6 +46,7 @@ export default function ScrollSideNav() {
   const items = [
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
+    { id: 'education', label: 'Education' },
     { id: 'about', label: 'About' },
   ];
 
