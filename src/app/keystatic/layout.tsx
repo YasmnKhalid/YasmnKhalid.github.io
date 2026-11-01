@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import KeystaticApp from './keystatic';
 
 export const metadata = {
@@ -6,5 +7,9 @@ export const metadata = {
 };
 
 export default function Layout() {
+  if (process.env.NODE_ENV === 'production') {
+    notFound();
+  }
+
   return <KeystaticApp />;
 }
